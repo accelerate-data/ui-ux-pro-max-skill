@@ -1,0 +1,23 @@
+{
+  "name": "ui-ux-pro-max",
+  "description": "Vendored UI/UX design intelligence skill (styles, palettes, font pairings, charts, and stack guidance) packaged for Accelerate Data Codex marketplace installation.",
+  "version": "2.13.0",
+  "author": {
+    "name": "Accelerate Data",
+    "url": "https://github.com/accelerate-data"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/accelerate-data/ui-ux-pro-max-skill",
+  "skills": "./.claude/skills/",
+  "keywords": [
+    "ui",
+    "ux",
+    "design",
+    "styles",
+    "typography",
+    "color-palette",
+    "accessibility",
+    "charts",
+    "components"
+  ]
+}
