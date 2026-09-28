@@ -51,13 +51,11 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.SYNC_PAT }}
         run: |
-          gh pr view sync/upstream-ui-ux-pro-max-skill --json number >/dev/null 2>&1 || \
-            gh pr create \
-              --base main \
-              --head sync/upstream-ui-ux-pro-max-skill \
-              --title "Sync upstream nextlevelbuilder/ui-ux-pro-max-skill" \
-              --body-file - <<'BODY'
-            Automated sync from `nextlevelbuilder/ui-ux-pro-max-skill`.
-
-            Review vendored skill changes before merge.
-          BODY
+          existing=$(gh api "repos/${GITHUB_REPOSITORY}/pulls?head=${GITHUB_REPOSITORY_OWNER}:sync/upstream-ui-ux-pro-max-skill&base=main&state=open" --jq 'length')
+          if [ "$existing" = "0" ]; then
+            gh api "repos/${GITHUB_REPOSITORY}/pulls" \
+              -f title="Sync upstream nextlevelbuilder/ui-ux-pro-max-skill" \
+              -f head="sync/upstream-ui-ux-pro-max-skill" \
+              -f base="main" \
+              -f body=$'Automated sync from `nextlevelbuilder/ui-ux-pro-max-skill`.\n\nReview vendored skill changes before merge.'
+          fi
