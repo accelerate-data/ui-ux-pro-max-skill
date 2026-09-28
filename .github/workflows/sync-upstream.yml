@@ -49,7 +49,7 @@ jobs:
 
       - name: Open sync pull request
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.SYNC_PAT }}
         run: |
           gh pr view sync/upstream-ui-ux-pro-max-skill --json number >/dev/null 2>&1 || \
             gh pr create \
