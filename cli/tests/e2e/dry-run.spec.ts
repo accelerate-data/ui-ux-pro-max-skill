@@ -43,6 +43,19 @@ test('dry-run plan supports the zcode platform layout', async () => {
   expect(joined).toContain('Would copy 6 sub-skills (');
 });
 
+test('dry-run plan supports the kimi platform layout', async () => {
+  const scratch = await mkdtemp(join(tmpdir(), 'uipro-dry-run-kimi-'));
+
+  const actions = await planPlatformInstallActions(scratch, 'kimi');
+
+  const joined = actions.join('\n');
+  expect(joined).toContain(
+    join(scratch, '.kimi-code', 'skills', 'ui-ux-pro-max', 'SKILL.md')
+  );
+  expect(joined).toContain('Would copy data + scripts:');
+  expect(joined).toContain('Would copy 6 sub-skills (');
+});
+
 test('dry-run plan keeps amazonq data and sub-skills out of the rules folder', async () => {
   const scratch = await mkdtemp(join(tmpdir(), 'uipro-dry-run-amazonq-'));
 
@@ -56,6 +69,19 @@ test('dry-run plan keeps amazonq data and sub-skills out of the rules folder', a
   );
   expect(actions[2]).toMatch(/^Would copy 6 sub-skills \(/);
   expect(actions[2].endsWith(`: ${join(scratch, '.amazonq', 'skills')}`)).toBe(true);
+});
+
+test('dry-run plan supports the openclaw platform layout', async () => {
+  const scratch = await mkdtemp(join(tmpdir(), 'uipro-dry-run-openclaw-'));
+
+  const actions = await planPlatformInstallActions(scratch, 'openclaw');
+
+  const joined = actions.join('\n');
+  expect(joined).toContain(
+    join(scratch, '.agents', 'skills', 'ui-ux-pro-max', 'SKILL.md')
+  );
+  expect(joined).toContain('Would copy data + scripts:');
+  expect(joined).toContain('Would copy 6 sub-skills (');
 });
 
 test('dry-run plan for all platforms covers every unique layout', async () => {
