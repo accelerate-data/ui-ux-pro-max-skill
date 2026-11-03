@@ -1,7 +1,7 @@
 {
   "name": "ui-ux-pro-max",
   "description": "Vendored UI/UX design intelligence skill (styles, palettes, font pairings, charts, and stack guidance) packaged for Accelerate Data Codex marketplace installation.",
-  "version": "2.13.0",
+  "version": "2.13.1",
   "author": {
     "name": "Accelerate Data",
     "url": "https://github.com/accelerate-data"
@@ -19,5 +19,13 @@
     "accessibility",
     "charts",
     "components"
-  ]
+  ],
+  "interface": {
+    "displayName": "ui-ux-pro-max",
+    "shortDescription": "Vendored UI/UX design intelligence skill (styles, palettes, font pairings, charts, and stack guidance) packaged for Accelerate Data Codex marketplace installation.",
+    "developerName": "Accelerate Data",
+    "capabilities": [],
+    "longDescription": "Vendored UI/UX design intelligence skill (styles, palettes, font pairings, charts, and stack guidance) packaged for Accelerate Data Codex marketplace installation.",
+    "category": "Creativity"
+  }
 }
